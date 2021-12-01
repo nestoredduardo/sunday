@@ -18,41 +18,24 @@ const NavBar = () => {
   }, [router])
 
   return (
-    <BottomNavigation showLabels className="fixed bottom-0 w-full">
+    <BottomNavigation
+      showLabels
+      className="fixed bottom-0 w-full bg-background"
+    >
       <Link href="/">
-        <BottomNavigationAction
-          showLabel
-          label="Dashboard"
-          icon={<DashboardIcon />}
-        />
+        <BottomNavigationAction label="Dashboard" icon={<DashboardIcon />} />
       </Link>
       <Link href="/proyectos">
-        <BottomNavigationAction
-          showLabel
-          label="Proyectos"
-          icon={<ProjectIcon />}
-        />
+        <BottomNavigationAction label="Proyectos" icon={<ProjectIcon />} />
       </Link>
       <Link href="/finanzas">
-        <BottomNavigationAction
-          showLabel
-          label="Finanzas"
-          icon={<FinanceIcon />}
-        />
+        <BottomNavigationAction label="Finanzas" icon={<FinanceIcon />} />
       </Link>
       <Link href="/habitos">
-        <BottomNavigationAction
-          showLabel
-          label="Hábitos"
-          icon={<HabitsIcon />}
-        />
+        <BottomNavigationAction label="Hábitos" icon={<HabitsIcon />} />
       </Link>
       <Link href="/objetivos">
-        <BottomNavigationAction
-          showLabel
-          label="Objetivos"
-          icon={<AimIcon />}
-        />
+        <BottomNavigationAction label="Objetivos" icon={<AimIcon />} />
       </Link>
     </BottomNavigation>
   )

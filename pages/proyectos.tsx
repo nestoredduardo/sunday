@@ -1,11 +1,11 @@
 import Layout from '@components/Layout'
 
+import ProjectosMain from '@components/Projects'
+
 const Proyectos = () => {
   return (
     <Layout>
-      <main>
-        <h1>Proyectos en construcción</h1>
-      </main>
+      <ProjectosMain />
     </Layout>
   )
 }
