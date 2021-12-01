@@ -1,6 +1,22 @@
-import Head from 'next/head';
+import Head from 'next/head'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
-import Header from '@components/Header';
+import Layout from '@components/Layout'
+
+const theme = createTheme({
+  palette: {
+    type: 'light',
+    primary: {
+      main: '#7645D9',
+    },
+    secondary: {
+      main: '#58EFFF',
+    },
+    success: {
+      main: '#3ef1a7',
+    },
+  },
+})
 
 export default function Home() {
   return (
@@ -13,8 +29,10 @@ export default function Home() {
         <meta name="title" content="Sunday" />
       </Head>
       <>
-        <Header />
+        <ThemeProvider theme={theme}>
+          <Layout></Layout>
+        </ThemeProvider>
       </>
     </>
-  );
+  )
 }
