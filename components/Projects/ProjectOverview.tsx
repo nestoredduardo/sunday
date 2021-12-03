@@ -37,6 +37,7 @@ const ProjectOverview = () => {
       <div className="w-2/3 mx-auto my-4">
         <Doughnut data={data} />
       </div>
+      <p className="text-center">20/30 Tareas Completadas</p>
     </section>
   )
 }
