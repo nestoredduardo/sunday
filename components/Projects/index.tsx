@@ -3,7 +3,7 @@ import ProjectsNav from './ProjectsNav'
 
 const Projects = () => {
   return (
-    <main>
+    <main className="mb-20">
       <ProjectsNav />
       <ProjectInfo />
     </main>
