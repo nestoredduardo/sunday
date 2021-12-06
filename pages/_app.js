@@ -2,6 +2,8 @@ import 'tailwindcss/tailwind.css'
 import '../magic/index.css'
 
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import generateStore from '@store'
+import { Provider } from 'react-redux'
 
 const theme = createTheme({
   palette: {
@@ -18,11 +20,15 @@ const theme = createTheme({
   },
 })
 
+const store = generateStore()
+
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Provider>
   )
 }
 
