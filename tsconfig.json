@@ -18,7 +18,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@images/*": ["public/images/*"],
-      "@store": ["redux/store.ts"]
+      "@store": ["redux/store.ts"],
+      "@utils/*": ["utils/*"]
     }
   },
   "include": [

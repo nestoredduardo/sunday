@@ -1,17 +1,11 @@
 import { useSelector } from 'react-redux'
-import { createSelector } from 'reselect'
-
-import type { RootState } from '@store'
-
 import { Doughnut } from 'react-chartjs-2'
 import { Chart, ArcElement } from 'chart.js'
 
+import { selectSelectedProject } from '@utils/ProjectsSelectors'
+
 const ProjectOverview = () => {
-  const selectSelectedProject = createSelector(
-    (state: RootState) => state.projects,
-    (projects) => projects.filter((project) => project['isSelected'])
-  )
-  const selectedProject = useSelector(selectSelectedProject)[0]
+  const selectedProject = useSelector(selectSelectedProject)
 
   Chart.register(ArcElement)
   //Chart.register(ChartDataLabels)
