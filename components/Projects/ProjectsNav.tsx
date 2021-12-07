@@ -20,14 +20,14 @@ const ProjectsNav = () => {
       <h1 className="m-6 text-3xl font-medium">Tus Proyectos 😎</h1>
       <section className="m-6 flex">
         <div className="flex gap-2 overflow-x-auto">
-          {Object.keys(projects).map((key, index) => {
+          {projects.map((project, index) => {
             return (
               <Button
                 key={index}
                 style={{ textTransform: 'none' }}
-                variant={projects[key]['isSelected'] ? 'contained' : 'outlined'}
+                variant={project['isSelected'] ? 'contained' : 'outlined'}
               >
-                {projects[key]['name']}
+                {project['name']}
               </Button>
             )
           })}
