@@ -1,8 +1,5 @@
-import Image from 'next/image'
 import IconButton from '@mui/material/IconButton'
 import AddBoxIcon from '@mui/icons-material/AddBox'
-
-import milestoneImage from '@images/milestone.svg'
 
 const ProjectProgress = () => {
   return (
