@@ -1,10 +1,25 @@
+import { useSelector } from 'react-redux'
+import { createSelector } from 'reselect'
+
+import type { RootState } from '@store'
+
 import { Doughnut } from 'react-chartjs-2'
 import { Chart, ArcElement } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { useEffect, useState } from 'react'
 
 const ProjectOverview = () => {
+  const selectSelectedProject = createSelector(
+    (state: RootState) => state.projects,
+    (projects) =>
+      Object.fromEntries(
+        Object.entries(projects).filter(([k, v]) => projects[k]['isSelected'])
+      )
+  )
+  const selectedProject = useSelector(selectSelectedProject)
+
   Chart.register(ArcElement)
-  Chart.register(ChartDataLabels)
+  //Chart.register(ChartDataLabels)
 
   const data = {
     options: {
@@ -29,11 +44,7 @@ const ProjectOverview = () => {
   return (
     <section>
       <h2 className="font-bold text-lg">Objetivo:</h2>
-      <p className="leading-5">
-        Simplificar el proceso de compartir cuentas de la manera manera más
-        segura y cómoda posible permitiéndoles a los usuarios ahorrar en sus
-        gastos de suscripciones.
-      </p>
+      <p className="leading-5">{selectedProject['name']}</p>
       <div className="w-2/3 mx-auto my-4">
         <Doughnut data={data} />
       </div>

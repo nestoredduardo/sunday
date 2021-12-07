@@ -8,6 +8,8 @@ const rootReducer = combineReducers({
   projects: projectsReducer,
 })
 
+export type RootState = ReturnType<typeof rootReducer>
+
 const generateStore = () => {
   const middlewareEnhancer = applyMiddleware(thunk)
   const composeEnhancers = composeWithDevTools(middlewareEnhancer)
