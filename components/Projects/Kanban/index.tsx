@@ -13,16 +13,19 @@ const Kanban = () => {
   }
 
   return (
-    <DragDropContext
-      onDragEnd={onDragEnd}
-      className="p-6 kanban-bg flex overflow-x-auto gap-6"
-    >
-      {selectedProject.columns.map((column) => {
-        return (
-          <TaskList key={column.id} column={column} project={selectedProject} />
-        )
-      })}
-    </DragDropContext>
+    <section className="p-6 kanban-bg flex overflow-x-auto gap-6">
+      <DragDropContext onDragEnd={onDragEnd}>
+        {selectedProject.columns.map((column) => {
+          return (
+            <TaskList
+              key={column.id}
+              column={column}
+              project={selectedProject}
+            />
+          )
+        })}
+      </DragDropContext>
+    </section>
   )
 }
 

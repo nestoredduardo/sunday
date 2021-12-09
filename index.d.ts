@@ -3,7 +3,7 @@ type TProject = {
   name: string
   aim: string
   types: TTaskType[]
-  task: TTask[]
+  taskList: TTask[]
   columns: TColumn[]
   columnOrder: string[]
 }

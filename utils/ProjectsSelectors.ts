@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect'
 
-import type { RootState } from '@store'
+interface RootState {
+  projects: TProject[]
+}
 
 const selectSelectedProject = createSelector(
   (state: RootState) => state.projects,

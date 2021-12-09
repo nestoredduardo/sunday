@@ -24,8 +24,8 @@ const ProjectOverview = () => {
       {
         label: 'Avance del proyecto',
         data: [
-          selectedProject['task'].length,
-          selectedProject['columns'][0]['taskIds'].length,
+          selectedProject.taskList.length,
+          selectedProject['columns'][0].taskIds.length,
         ],
         backgroundColor: ['#cb5eee', '#0cd7e4'],
         hoverOffset: 4,
@@ -41,7 +41,7 @@ const ProjectOverview = () => {
         <Doughnut data={data} />
       </div>
       <p className="text-center">
-        {`${selectedProject['columns'][0]['taskIds'].length}/${selectedProject['task'].length}`}{' '}
+        {`${selectedProject['columns'][0].taskIds.length}/${selectedProject.taskList.length}`}{' '}
         Tareas Completadas
       </p>
     </section>

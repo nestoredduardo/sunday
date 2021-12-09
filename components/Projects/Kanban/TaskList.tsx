@@ -4,27 +4,35 @@ import { Droppable } from 'react-beautiful-dnd'
 
 import Task from './Task'
 
-const TaskList = ({ column, project }) => {
+interface TaskListProps {
+  column: TColumn
+  project: TProject
+}
+
+const TaskList = ({ column, project }: TaskListProps) => {
   return (
     <section className="flex flex-col flex-shrink-0 w-72">
       <div className="flex items-center flex-shrink-0 h-10 px-2">
         <span className="block text-sm font-semibold text-gray-800">
-          {column}
+          {column.title}
         </span>
         <span className="flex items-center justify-center w-5 h-5 ml-2 text-sm font-semibold text-indigo-500 bg-white rounded bg-opacity-30">
-          6
+          {column.taskIds.length}
         </span>
         <IconButton color="primary" className="ml-auto">
           <AddIcon />
         </IconButton>
       </div>
-      <Droppable droppableId={}>
+      <Droppable droppableId={column.id}>
         {(provided) => (
-          <ul className="flex flex-col pb-2 overflow-auto">
-            <Task />
-            <Task />
-            <Task />
-            <Task />
+          <ul
+            className="flex flex-col pb-2 overflow-auto"
+            {...provided.droppableProps}
+          >
+            {column.taskIds.map((taskId) => {
+              const task = project.taskList.find((task) => task.id == taskId)
+              return <Task key={taskId} task={task} types={project.types} />
+            })}
           </ul>
         )}
       </Droppable>

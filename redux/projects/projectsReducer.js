@@ -12,7 +12,7 @@ const initialState = [
       { id: 6, name: 'Launch', color: 'amber' },
       { id: 7, name: 'Marketing', color: 'red' },
     ],
-    task: [
+    taskList: [
       { id: 'task-1', content: 'Cook dinner', typeId: 1 },
       { id: 'task-2', content: 'Cook dinner', typeId: 2 },
       { id: 'task-3', content: 'Cook dinner', typeId: 3 },

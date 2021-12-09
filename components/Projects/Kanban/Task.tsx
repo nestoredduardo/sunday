@@ -1,15 +1,22 @@
-const Task = () => {
+interface TaskProps {
+  task: TTask
+  types: TTaskType[]
+}
+
+const Task = ({ task, types }: TaskProps) => {
+  const type = types.find((type) => type.id === task.typeId)
+
   return (
     <li
       className="relative flex flex-col items-start p-4 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100"
       draggable="true"
     >
-      <span className="flex items-center h-6 px-3 text-xs font-semibold text-pink-500 bg-pink-100 rounded-full">
-        Design
+      <span
+        className={`flex items-center h-6 px-3 text-xs font-semibold rounded-full text-${type.color}-500 bg-${type.color}-100`}
+      >
+        {type.name}
       </span>
-      <h4 className="mt-3 text-sm font-medium">
-        This is the title of the card for the thing that needs to be done.
-      </h4>
+      <h4 className="mt-3 text-sm font-medium">{task.content} </h4>
     </li>
   )
 }
