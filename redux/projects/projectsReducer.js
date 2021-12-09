@@ -5,20 +5,20 @@ const initialState = [
     aim: 'Simplificar el proceso de compartir cuentas de la manera manera más segura y cómoda posible permitiéndoles a los usuarios ahorrar en sus gastos de suscripciones.',
     types: [
       { id: 1, name: 'Design', color: 'pink' },
-      { id: 2, name: 'Development', color: 'emerald' },
+      { id: 2, name: 'Development', color: 'green' },
       { id: 3, name: 'Data', color: 'blue' },
       { id: 4, name: 'Planning', color: 'indigo' },
-      { id: 5, name: 'Test', color: 'violet' },
+      { id: 5, name: 'Testing', color: 'purple' },
       { id: 6, name: 'Launch', color: 'amber' },
       { id: 7, name: 'Marketing', color: 'red' },
     ],
     taskList: [
-      { id: 'task-1', content: 'Cook dinner', typeId: 1 },
+      { id: 'task-1', content: 'Cook Design', typeId: 1 },
       { id: 'task-2', content: 'Cook dinner', typeId: 2 },
       { id: 'task-3', content: 'Cook dinner', typeId: 3 },
       { id: 'task-4', content: 'Cook dinner', typeId: 4 },
       { id: 'task-5', content: 'Cook dinner', typeId: 5 },
-      { id: 'task-6', content: 'Cook dinner', typeId: 1 },
+      { id: 'task-6', content: 'Cook dinner', typeId: 6 },
     ],
     columns: [
       {

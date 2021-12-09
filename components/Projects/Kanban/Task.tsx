@@ -5,6 +5,8 @@ interface TaskProps {
 
 const Task = ({ task, types }: TaskProps) => {
   const type = types.find((type) => type.id === task.typeId)
+  const textColor = 'text-' + type.color + '-500'
+  const bgColor = 'bg-' + type.color + '-100'
 
   return (
     <li
@@ -12,7 +14,7 @@ const Task = ({ task, types }: TaskProps) => {
       draggable="true"
     >
       <span
-        className={`flex items-center h-6 px-3 text-xs font-semibold rounded-full text-${type.color}-500 bg-${type.color}-100`}
+        className={`flex items-center h-6 px-3 text-xs font-semibold rounded-full ${textColor} ${bgColor}`}
       >
         {type.name}
       </span>
