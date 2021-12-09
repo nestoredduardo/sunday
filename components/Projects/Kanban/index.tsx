@@ -1,19 +1,28 @@
 import { useSelector } from 'react-redux'
-import {DragDropContext} from 'react-beautiful-dnd'
+import { DragDropContext } from 'react-beautiful-dnd'
 
 import TaskList from './TaskList'
 
-const Kanban = () => {
-  const projects = useSelector((state) => state)
+import { selectSelectedProject } from '@utils/ProjectsSelectors'
 
-  console.log(projects)
+const Kanban = () => {
+  const selectedProject = useSelector(selectSelectedProject)
+
+  const onDragEnd = () => {
+    //TODO:
+  }
 
   return (
-    <section className="p-6 kanban-bg flex overflow-x-auto gap-6">
-      <TaskList />
-      <TaskList />
-      <TaskList />
-    </section>
+    <DragDropContext
+      onDragEnd={onDragEnd}
+      className="p-6 kanban-bg flex overflow-x-auto gap-6"
+    >
+      {selectedProject.columns.map((column) => {
+        return (
+          <TaskList key={column.id} column={column} project={selectedProject} />
+        )
+      })}
+    </DragDropContext>
   )
 }
 
