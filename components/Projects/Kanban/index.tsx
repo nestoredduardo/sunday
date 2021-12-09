@@ -1,5 +1,7 @@
-import TaskList from './TaskList'
 import { useSelector } from 'react-redux'
+import {DragDropContext} from 'react-beautiful-dnd'
+
+import TaskList from './TaskList'
 
 const Kanban = () => {
   const projects = useSelector((state) => state)
