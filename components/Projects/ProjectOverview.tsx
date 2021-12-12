@@ -19,13 +19,14 @@ const ProjectOverview = () => {
         },
       },
     },
-    labels: ['Hecho', 'En cola'],
+    labels: ['Done', 'Backlog'],
     datasets: [
       {
         label: 'Avance del proyecto',
         data: [
-          selectedProject.taskList.length,
           selectedProject.columns[2].taskIds.length,
+          selectedProject.taskList.length -
+            selectedProject.columns[2].taskIds.length,
         ],
         backgroundColor: ['#cb5eee', '#0cd7e4'],
         hoverOffset: 4,

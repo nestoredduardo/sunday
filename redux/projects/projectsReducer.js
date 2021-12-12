@@ -30,7 +30,7 @@ const initialState = [
       },
       {
         id: 'todo',
-        title: 'To do',
+        title: 'Doing',
         taskIds: ['task-5'],
       },
       {
@@ -61,7 +61,7 @@ const initialState = [
       },
       {
         id: 'todo',
-        title: 'To do',
+        title: 'Doing',
         taskIds: ['task-5'],
       },
       {
