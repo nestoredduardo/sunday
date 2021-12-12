@@ -11,7 +11,7 @@ interface TaskListProps {
 
 const TaskList = ({ column, project }: TaskListProps) => {
   return (
-    <section className="flex flex-col flex-shrink-0 w-72">
+    <section className="flex flex-col w-72">
       <div className="flex items-center flex-shrink-0 h-10 px-2">
         <span className="block text-sm font-semibold text-gray-800">
           {column.title}
@@ -26,7 +26,7 @@ const TaskList = ({ column, project }: TaskListProps) => {
       <Droppable droppableId={column.id}>
         {(provided) => (
           <ul
-            className="flex flex-col pb-2 overflow-auto"
+            className="flex flex-col pb-2 overflow-auto flex-grow"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

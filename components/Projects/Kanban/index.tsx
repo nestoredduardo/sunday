@@ -23,19 +23,43 @@ const Kanban = ({ updateColumn }) => {
       return
     }
 
-    const column = selectedProject.columns.find(
+    const start = selectedProject.columns.find(
       (column) => column.id === source.droppableId
     )
-    const newTaskIds = column.taskIds
-    newTaskIds.splice(source.index, 1)
-    newTaskIds.splice(destination.index, 0, draggableId)
+    const finish = selectedProject.columns.find(
+      (column) => column.id === destination.droppableId
+    )
 
-    const newColumn = {
-      ...column,
-      taskIds: newTaskIds,
+    if (start === finish) {
+      const newTaskIds = start.taskIds
+      newTaskIds.splice(source.index, 1)
+      newTaskIds.splice(destination.index, 0, draggableId)
+
+      const newColumn = {
+        ...start,
+        taskIds: newTaskIds,
+      }
+
+      updateColumn(newColumn)
+      return
     }
 
-    updateColumn(newColumn)
+    //one column to another
+    const startTaskIds = start.taskIds
+    startTaskIds.splice(source.index, 1)
+    const newStart = {
+      ...start,
+      taskIds: startTaskIds,
+    }
+    updateColumn(newStart)
+
+    const finishTaskIds = finish.taskIds
+    finishTaskIds.splice(destination.index, 0, draggableId)
+    const newFinish = {
+      ...finish,
+      taskIds: finishTaskIds,
+    }
+    updateColumn(newFinish)
   }
 
   return (
