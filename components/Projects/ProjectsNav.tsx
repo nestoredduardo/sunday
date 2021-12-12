@@ -1,19 +1,19 @@
-import { useSelector } from 'react-redux'
-import type { RootState } from '@store'
+import { useSelector, connect } from 'react-redux'
 
 import { Button } from '@mui/material'
 import { styled } from '@mui/system'
 
+import { selectProject } from '@projectActions'
+
 const LaunchButton = styled(Button)(({ theme }) => ({
   color: '#E858FF',
   backgroundColor: '#E858FF',
-  '&:hover': {
-    backgroundColor: '#B946CC',
-  },
 }))
 
-const ProjectsNav = () => {
-  const projects = useSelector((state: RootState) => state.projects)
+const ProjectsNav = ({ selectProject }) => {
+  const projects = useSelector((state) => state.projects)
+
+  const handleLaunch = () => {}
 
   return (
     <section className="border-b-4 border-gray-border">
@@ -26,16 +26,23 @@ const ProjectsNav = () => {
                 key={index}
                 style={{ textTransform: 'none' }}
                 variant={project['isSelected'] ? 'contained' : 'outlined'}
+                onClick={() => selectProject(project.name)}
               >
                 {project['name']}
               </Button>
             )
           })}
         </div>
-        <LaunchButton className="ml-auto">🚀</LaunchButton>
+        <LaunchButton className="ml-auto" onClick={handleLaunch}>
+          🚀
+        </LaunchButton>
       </section>
     </section>
   )
 }
 
-export default ProjectsNav
+const mapDispatchToProps = {
+  selectProject,
+}
+
+export default connect(null, mapDispatchToProps)(ProjectsNav)

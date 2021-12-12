@@ -1,4 +1,4 @@
-import { UPDATE_COLUMN } from './projectsType'
+import { UPDATE_COLUMN, SELECT_PROJECT } from './projectsType'
 
 const initialState = [
   {
@@ -44,14 +44,23 @@ const initialState = [
   {
     isSelected: false,
     name: 'Sunday',
-    aim: 'Simplificar el proceso de compartir cuentas de la manera manera más segura y cómoda posible permitiéndoles a los usuarios ahorrar en sus gastos de suscripciones.',
-    task: [
-      { id: 'task-1', content: 'Cook dinner', type: 'Design' },
-      { id: 'task-2', content: 'Cook dinner', type: 'Design' },
-      { id: 'task-3', content: 'Cook dinner', type: 'Design' },
-      { id: 'task-4', content: 'Cook dinner', type: 'Design' },
-      { id: 'task-5', content: 'Cook dinner', type: 'Design' },
-      { id: 'task-6', content: 'Cook dinner', type: 'Design' },
+    aim: 'Usando Simplificar el proceso de compartir cuentas de la manera manera más segura y cómoda posible permitiéndoles a los usuarios ahorrar en sus gastos de suscripciones.',
+    types: [
+      { id: 1, name: 'Design', color: 'pink' },
+      { id: 2, name: 'Development', color: 'green' },
+      { id: 3, name: 'Data', color: 'blue' },
+      { id: 4, name: 'Planning', color: 'indigo' },
+      { id: 5, name: 'Testing', color: 'purple' },
+      { id: 6, name: 'Launch', color: 'yellow' },
+      { id: 7, name: 'Marketing', color: 'red' },
+    ],
+    taskList: [
+      { id: 'task-1', content: 'Cook Design', typeId: 1 },
+      { id: 'task-2', content: 'Cook dinner', typeId: 2 },
+      { id: 'task-3', content: 'Cook dinner', typeId: 3 },
+      { id: 'task-4', content: 'Cook dinner', typeId: 4 },
+      { id: 'task-5', content: 'Cook dinner', typeId: 5 },
+      { id: 'task-6', content: 'Cook dinner', typeId: 6 },
     ],
     columns: [
       {
@@ -91,6 +100,20 @@ const reducer = (state = initialState, action) => {
 
             return action.payload
           }),
+        }
+      })
+    case SELECT_PROJECT:
+      return state.map((project) => {
+        if (project.name === action.payload) {
+          return {
+            ...project,
+            isSelected: true,
+          }
+        }
+
+        return {
+          ...project,
+          isSelected: false,
         }
       })
     default:
