@@ -11,7 +11,7 @@ interface TaskListProps {
 
 const TaskList = ({ column, project }: TaskListProps) => {
   return (
-    <section className="flex flex-col w-72">
+    <section className="flex flex-col flex-shrink-0 w-72">
       <div className="flex items-center flex-shrink-0 h-10 px-2">
         <span className="block text-sm font-semibold text-gray-800">
           {column.title}

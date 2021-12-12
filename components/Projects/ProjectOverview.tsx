@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux'
 import { Doughnut } from 'react-chartjs-2'
-import { Chart, ArcElement } from 'chart.js'
+import { Chart, ArcElement, Tooltip } from 'chart.js'
 
 import { selectSelectedProject } from '@utils/ProjectsSelectors'
 
 const ProjectOverview = () => {
   const selectedProject = useSelector(selectSelectedProject)
 
-  Chart.register(ArcElement)
+  Chart.register(ArcElement, Tooltip)
   //Chart.register(ChartDataLabels)
 
   const data = {
@@ -25,7 +25,7 @@ const ProjectOverview = () => {
         label: 'Avance del proyecto',
         data: [
           selectedProject.taskList.length,
-          selectedProject['columns'][0].taskIds.length,
+          selectedProject.columns[2].taskIds.length,
         ],
         backgroundColor: ['#cb5eee', '#0cd7e4'],
         hoverOffset: 4,
@@ -41,7 +41,7 @@ const ProjectOverview = () => {
         <Doughnut data={data} />
       </div>
       <p className="text-center">
-        {`${selectedProject['columns'][0].taskIds.length}/${selectedProject.taskList.length}`}{' '}
+        {`${selectedProject.columns[2].taskIds.length}/${selectedProject.taskList.length}`}{' '}
         Tareas Completadas
       </p>
     </section>
