@@ -20,7 +20,8 @@
       "@images/*": ["public/images/*"],
       "@store": ["redux/store.ts"],
       "@utils/*": ["utils/*"],
-      "@projectActions": ["redux/projects/projectsActions.js"]
+      "@projectActions": ["redux/projects/projectsActions.js"],
+      "@modalActions": ["redux/modal/modalActions.js"]
     }
   },
   "include": [

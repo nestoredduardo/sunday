@@ -3,6 +3,7 @@ import { useSelector, connect } from 'react-redux'
 import { Button } from '@mui/material'
 import { styled } from '@mui/system'
 
+import type { RootState } from '@store'
 import { selectProject } from '@projectActions'
 
 const LaunchButton = styled(Button)(({ theme }) => ({
@@ -11,13 +12,11 @@ const LaunchButton = styled(Button)(({ theme }) => ({
 }))
 
 const ProjectsNav = ({ selectProject }) => {
-  const projects = useSelector((state) => state.projects)
-
-  const handleLaunch = () => {}
+  const projects = useSelector((state: RootState) => state.projects)
 
   return (
     <section className="border-b-4 border-gray-border">
-      <h1 className="m-6 text-3xl font-medium">Tus Proyectos 😎</h1>
+      <h1 className="mx-6 text-3xl font-medium">Tus Proyectos 😎</h1>
       <section className="m-6 flex">
         <div className="flex gap-2 overflow-x-auto">
           {projects.map((project, index) => {
@@ -33,9 +32,7 @@ const ProjectsNav = ({ selectProject }) => {
             )
           })}
         </div>
-        <LaunchButton className="ml-auto" onClick={handleLaunch}>
-          🚀
-        </LaunchButton>
+        <LaunchButton className="ml-auto">🚀</LaunchButton>
       </section>
     </section>
   )

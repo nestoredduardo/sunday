@@ -1,8 +1,9 @@
 import Head from 'next/head'
 
 import Layout from '@components/Layout'
+import Modal from '@components/Modal'
 
-export default function Home() {
+function Home() {
   return (
     <>
       <Head>
@@ -13,8 +14,16 @@ export default function Home() {
         <meta name="title" content="Sunday" />
       </Head>
       <>
+        <Modal />
         <Layout></Layout>
       </>
     </>
   )
 }
+
+const mapStateToProps = ({ modals }) => ({
+  show: modals.show,
+  modalName: modals.modalName,
+})
+
+export default connect(mapStateToProps, null)(Home)
