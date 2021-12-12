@@ -1,15 +1,41 @@
-import { useSelector } from 'react-redux'
+import { useSelector, connect } from 'react-redux'
 import { DragDropContext } from 'react-beautiful-dnd'
+
+import { selectSelectedProject } from '@utils/ProjectsSelectors'
+import { updateColumn } from '@projectActions'
 
 import TaskList from './TaskList'
 
-import { selectSelectedProject } from '@utils/ProjectsSelectors'
-
-const Kanban = () => {
+const Kanban = ({ updateColumn }) => {
   const selectedProject = useSelector(selectSelectedProject)
 
-  const onDragEnd = () => {
-    //TODO:
+  const onDragEnd = (result) => {
+    const { destination, source, draggableId } = result
+
+    if (!destination) {
+      return
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.indes === source.index
+    ) {
+      return
+    }
+
+    const column = selectedProject.columns.find(
+      (column) => column.id === source.droppableId
+    )
+    const newTaskIds = column.taskIds
+    newTaskIds.splice(source.index, 1)
+    newTaskIds.splice(destination.index, 0, draggableId)
+
+    const newColumn = {
+      ...column,
+      taskIds: newTaskIds,
+    }
+
+    updateColumn(newColumn)
   }
 
   return (
@@ -29,4 +55,8 @@ const Kanban = () => {
   )
 }
 
-export default Kanban
+const mapDispatchToProps = {
+  updateColumn,
+}
+
+export default connect(null, mapDispatchToProps)(Kanban)

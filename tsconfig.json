@@ -19,7 +19,8 @@
       "@components/*": ["components/*"],
       "@images/*": ["public/images/*"],
       "@store": ["redux/store.ts"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@projectActions": ["redux/projects/projectsActions.js"]
     }
   },
   "include": [

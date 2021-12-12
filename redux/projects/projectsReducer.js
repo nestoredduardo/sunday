@@ -1,3 +1,5 @@
+import { UPDATE_COLUMN } from './projectsType'
+
 const initialState = [
   {
     isSelected: true,
@@ -74,6 +76,23 @@ const initialState = [
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case UPDATE_COLUMN:
+      return state.map((project) => {
+        if (!project.isSelected) {
+          return project
+        }
+
+        return {
+          ...project,
+          columns: project.columns.map((column) => {
+            if (column.id !== action.payload.id) {
+              return column
+            }
+
+            return action.payload
+          }),
+        }
+      })
     default:
       return state
   }

@@ -1,0 +1,3 @@
+const UPDATE_COLUMN = 'UPDATE_COLUMN'
+
+export { UPDATE_COLUMN }

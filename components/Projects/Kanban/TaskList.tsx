@@ -28,11 +28,20 @@ const TaskList = ({ column, project }: TaskListProps) => {
           <ul
             className="flex flex-col pb-2 overflow-auto"
             {...provided.droppableProps}
+            ref={provided.innerRef}
           >
-            {column.taskIds.map((taskId) => {
+            {column.taskIds.map((taskId, index) => {
               const task = project.taskList.find((task) => task.id == taskId)
-              return <Task key={taskId} task={task} types={project.types} />
+              return (
+                <Task
+                  key={taskId}
+                  task={task}
+                  types={project.types}
+                  index={index}
+                />
+              )
             })}
+            {provided.placeholder}
           </ul>
         )}
       </Droppable>

@@ -5,7 +5,7 @@ const ProjectProgress = () => {
   return (
     <section className="mt-3">
       <div className="flex">
-        <ul className="flex overflow-x-auto gap-2">
+        <ul className="flex overflow-x-auto gap-2 items-center">
           <li className="flex items-center h-6 px-3 text-xs font-semibold rounded-full text-pink-500 bg-pink-100">
             Design
           </li>
