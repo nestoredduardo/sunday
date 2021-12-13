@@ -1,6 +1,10 @@
 const NewProject = () => {
+  const stopPropagation = (e) => {
+    e.stopPropagation()
+  }
+
   return (
-    <section className="z-20 bg-white">
+    <section className="z-20 bg-white" onClick={stopPropagation}>
       <h1>Crea un nuevo Proyecto</h1>
       <form action="">
         <div className="md:flex md:items-center mb-6">

@@ -21,9 +21,4 @@ function Home() {
   )
 }
 
-const mapStateToProps = ({ modals }) => ({
-  show: modals.show,
-  modalName: modals.modalName,
-})
-
-export default connect(mapStateToProps, null)(Home)
+export default Home

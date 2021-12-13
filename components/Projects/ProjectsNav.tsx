@@ -5,13 +5,14 @@ import { styled } from '@mui/system'
 
 import type { RootState } from '@store'
 import { selectProject } from '@projectActions'
+import { showModal } from '@modalActions'
 
 const LaunchButton = styled(Button)(({ theme }) => ({
   color: '#E858FF',
   backgroundColor: '#E858FF',
 }))
 
-const ProjectsNav = ({ selectProject }) => {
+const ProjectsNav = ({ selectProject, showModal }) => {
   const projects = useSelector((state: RootState) => state.projects)
 
   return (
@@ -32,7 +33,12 @@ const ProjectsNav = ({ selectProject }) => {
             )
           })}
         </div>
-        <LaunchButton className="ml-auto">🚀</LaunchButton>
+        <LaunchButton
+          className="ml-auto"
+          onClick={() => showModal('newProject')}
+        >
+          🚀
+        </LaunchButton>
       </section>
     </section>
   )
@@ -40,6 +46,7 @@ const ProjectsNav = ({ selectProject }) => {
 
 const mapDispatchToProps = {
   selectProject,
+  showModal,
 }
 
 export default connect(null, mapDispatchToProps)(ProjectsNav)
