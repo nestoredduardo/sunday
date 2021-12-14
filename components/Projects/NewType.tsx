@@ -57,7 +57,7 @@ const NewType = ({ addType }) => {
               <label
                 htmlFor="color-pink"
                 className="flex justify-center items-center gap-1"
-                id={`color-${type.color}`}
+                key={`color-${type.color}`}
               >
                 <input
                   {...register('color', { required: true })}

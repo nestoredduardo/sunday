@@ -1,4 +1,9 @@
-import { UPDATE_COLUMN, SELECT_PROJECT, CREATE_PROJECT } from './projectsType'
+import {
+  UPDATE_COLUMN,
+  SELECT_PROJECT,
+  CREATE_PROJECT,
+  ADD_TYPE,
+} from './projectsType'
 
 const initialState = [
   {
@@ -88,6 +93,22 @@ const initialState = [
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_TYPE:
+      return state.map((project) => {
+        if (!project.isSelected) {
+          return project
+        }
+
+        const maxId = project.types.reduce((lastMax, type) => {
+          lastMax = lastMax >= type.id ? lastMax : type.id
+          return lastMax
+        }, 1)
+
+        return {
+          ...project,
+          types: [...project.types, { id: maxId + 1, ...action.payload }],
+        }
+      })
     case CREATE_PROJECT:
       return [...state, action.payload]
     case UPDATE_COLUMN:

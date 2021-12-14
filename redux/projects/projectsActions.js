@@ -66,7 +66,10 @@ const createProject = (name, aim) => (dispatch) => {
 }
 
 const addType = (name, color) => (dispatch) => {
-  console.log(name, color)
+  dispatch({
+    type: ADD_TYPE,
+    payload: { name, color },
+  })
 }
 
 export { updateColumn, selectProject, createProject, addType }
