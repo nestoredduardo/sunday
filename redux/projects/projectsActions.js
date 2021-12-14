@@ -65,11 +65,8 @@ const createProject = (name, aim) => (dispatch) => {
   })
 }
 
-const addType = (name, color) => (dispatch, getState) => {
-  const { projects } = getState()
-  const selectedProject = projects.filter((project) => project.isSelected)[0]
-
-  console.log(selectedProject)
+const addType = (name, color) => (dispatch) => {
+  console.log(name, color)
 }
 
 export { updateColumn, selectProject, createProject, addType }
