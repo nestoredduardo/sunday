@@ -8,7 +8,7 @@ const Modal = ({ show, modalName, hideModal }) => {
   if (show) {
     return (
       <div
-        className="min-h-screen min-w-full bg-[rgba(0,0,0,.65)] z-10 absolute justify-center items-center"
+        className="min-h-screen min-w-full bg-[rgba(0,0,0,.65)] z-10 absolute flex justify-center items-center"
         onClick={() => hideModal()}
       >
         {modalName === 'newProject' && <NewProject />}

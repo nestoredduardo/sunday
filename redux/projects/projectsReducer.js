@@ -1,11 +1,12 @@
-import { UPDATE_COLUMN, SELECT_PROJECT } from './projectsType'
+import { UPDATE_COLUMN, SELECT_PROJECT, CREATE_PROJECT } from './projectsType'
 
 const initialState = [
   {
-    isSelected: true,
-    name: 'Konto',
-    aim: 'Simplificar el proceso de compartir cuentas de la manera manera más segura y cómoda posible permitiéndoles a los usuarios ahorrar en sus gastos de suscripciones.',
+    isSelected: true, //default
+    name: 'Konto', //user
+    aim: 'Simplificar el proceso de compartir cuentas de la manera manera más segura y cómoda posible permitiéndoles a los usuarios ahorrar en sus gastos de suscripciones.', //user
     types: [
+      //default
       { id: 1, name: 'Design', color: 'pink' },
       { id: 2, name: 'Development', color: 'green' },
       { id: 3, name: 'Data', color: 'blue' },
@@ -15,6 +16,7 @@ const initialState = [
       { id: 7, name: 'Marketing', color: 'red' },
     ],
     taskList: [
+      //default
       { id: 'task-1', content: 'Cook Design', typeId: 1 },
       { id: 'task-2', content: 'Cook dinner', typeId: 2 },
       { id: 'task-3', content: 'Cook dinner', typeId: 3 },
@@ -23,6 +25,7 @@ const initialState = [
       { id: 'task-6', content: 'Cook dinner', typeId: 6 },
     ],
     columns: [
+      //default
       {
         id: 'backlog',
         title: 'Backlog',
@@ -39,7 +42,7 @@ const initialState = [
         taskIds: ['task-6'],
       },
     ],
-    columnOrder: ['backlog', 'todo', 'done'],
+    columnOrder: ['backlog', 'todo', 'done'], //default
   },
   {
     isSelected: false,
@@ -85,6 +88,8 @@ const initialState = [
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case CREATE_PROJECT:
+      return [...state, action.payload]
     case UPDATE_COLUMN:
       return state.map((project) => {
         if (!project.isSelected) {
