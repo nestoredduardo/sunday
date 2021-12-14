@@ -1,7 +1,11 @@
+import { connect } from 'react-redux'
+
 import IconButton from '@mui/material/IconButton'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 
-const ProjectProgress = () => {
+import { showModal } from '@modalActions'
+
+const ProjectProgress = ({ showModal }) => {
   return (
     <section className="mt-3">
       <div className="flex">
@@ -28,7 +32,7 @@ const ProjectProgress = () => {
             Marketing
           </li>
         </ul>
-        <IconButton color="primary">
+        <IconButton color="primary" onClick={() => showModal('addType')}>
           <AddBoxIcon />
         </IconButton>
       </div>
@@ -36,4 +40,8 @@ const ProjectProgress = () => {
   )
 }
 
-export default ProjectProgress
+const mapDispatchToProps = {
+  showModal,
+}
+
+export default connect(null, mapDispatchToProps)(ProjectProgress)

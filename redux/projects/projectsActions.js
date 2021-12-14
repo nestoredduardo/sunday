@@ -1,4 +1,9 @@
-import { UPDATE_COLUMN, SELECT_PROJECT, CREATE_PROJECT } from './projectsType'
+import {
+  UPDATE_COLUMN,
+  SELECT_PROJECT,
+  CREATE_PROJECT,
+  ADD_TYPE,
+} from './projectsType'
 
 const updateColumn = (newColumn) => (dispatch) => {
   dispatch({
@@ -60,4 +65,11 @@ const createProject = (name, aim) => (dispatch) => {
   })
 }
 
-export { updateColumn, selectProject, createProject }
+const addType = (name, color) => (dispatch, getState) => {
+  const { projects } = getState()
+  const selectedProject = projects.filter((project) => project.isSelected)[0]
+
+  console.log(selectedProject)
+}
+
+export { updateColumn, selectProject, createProject, addType }

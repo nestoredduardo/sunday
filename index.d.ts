@@ -15,7 +15,7 @@ type TTaskType = {
 }
 
 type TTask = {
-  id: string
+  id: number
   content: string
   typeId: number
 }
