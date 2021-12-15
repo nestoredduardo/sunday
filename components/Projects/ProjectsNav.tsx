@@ -19,7 +19,7 @@ const ProjectsNav = ({ selectProject, showModal }) => {
     <section className="border-b-4 border-gray-border">
       <h1 className="mx-6 text-3xl font-medium">Tus Proyectos 😎</h1>
       <section className="m-6 flex">
-        <div className="flex gap-2 overflow-x-auto">
+        <div className="flex gap-2 overflow-x-auto mr-2">
           {projects.map((project, index) => {
             return (
               <Button

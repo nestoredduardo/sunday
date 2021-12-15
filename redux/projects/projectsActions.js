@@ -3,6 +3,7 @@ import {
   SELECT_PROJECT,
   CREATE_PROJECT,
   ADD_TYPE,
+  NEW_TASK,
 } from './projectsType'
 
 const updateColumn = (newColumn) => (dispatch) => {
@@ -32,14 +33,14 @@ const createProject = (name, aim) => (dispatch) => {
     ],
     taskList: [
       //default
-      { id: 'task-1', content: 'Añadir tareas a mi proyecto', typeId: 1 },
+      { id: '1', content: 'Añadir tareas a mi proyecto', typeId: 1 },
     ],
     columns: [
       //default
       {
         id: 'backlog',
         title: 'Backlog',
-        taskIds: ['task-1'],
+        taskIds: [1],
       },
       {
         id: 'todo',
@@ -68,4 +69,11 @@ const addType = (name, color) => (dispatch) => {
   })
 }
 
-export { updateColumn, selectProject, createProject, addType }
+const newTask = (taskData, columnId) => (dispatch) => {
+  dispatch({
+    type: NEW_TASK,
+    payload: { taskData, columnId },
+  })
+}
+
+export { updateColumn, selectProject, createProject, addType, newTask }

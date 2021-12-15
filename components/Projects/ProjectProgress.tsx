@@ -40,6 +40,7 @@ const ProjectProgress = ({ showModal }) => {
           {selectedProject.types.map((type) => {
             return (
               <li
+                key={type.id}
                 className={`flex items-center text-center h-6 px-3 text-xs font-semibold rounded-full text-${type.color}-500 bg-${type.color}-100`}
               >
                 {type.name}

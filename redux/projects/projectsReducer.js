@@ -3,6 +3,7 @@ import {
   SELECT_PROJECT,
   CREATE_PROJECT,
   ADD_TYPE,
+  NEW_TASK,
 } from './projectsType'
 
 const initialState = [
@@ -21,30 +22,28 @@ const initialState = [
       { id: 7, name: 'Marketing', color: 'red' },
     ],
     taskList: [
-      //default
-      { id: 'task-1', content: 'Cook Design', typeId: 1 },
-      { id: 'task-2', content: 'Cook dinner', typeId: 2 },
-      { id: 'task-3', content: 'Cook dinner', typeId: 3 },
-      { id: 'task-4', content: 'Cook dinner', typeId: 4 },
-      { id: 'task-5', content: 'Cook dinner', typeId: 5 },
-      { id: 'task-6', content: 'Cook dinner', typeId: 6 },
+      { id: '1', content: 'Cook Design', typeId: 1 },
+      { id: '2', content: 'Cook dinner', typeId: 2 },
+      { id: '3', content: 'Cook dinner', typeId: 3 },
+      { id: '4', content: 'Cook dinner', typeId: 4 },
+      { id: '5', content: 'Cook dinner', typeId: 5 },
+      { id: '6', content: 'Cook dinner', typeId: 6 },
     ],
     columns: [
-      //default
       {
         id: 'backlog',
         title: 'Backlog',
-        taskIds: ['task-1', 'task-2', 'task-3', 'task-4'],
+        taskIds: [1, 2, 3, 4],
       },
       {
         id: 'todo',
         title: 'Doing',
-        taskIds: ['task-5'],
+        taskIds: [5],
       },
       {
         id: 'done',
         title: 'Done',
-        taskIds: ['task-6'],
+        taskIds: [6],
       },
     ],
     columnOrder: ['backlog', 'todo', 'done'], //default
@@ -63,12 +62,12 @@ const initialState = [
       { id: 7, name: 'Marketing', color: 'red' },
     ],
     taskList: [
-      { id: 1, content: 'Cook Design', typeId: 1 },
-      { id: 2, content: 'Cook dinner', typeId: 2 },
-      { id: 3, content: 'Cook dinner', typeId: 3 },
-      { id: 4, content: 'Cook dinner', typeId: 4 },
-      { id: 5, content: 'Cook dinner', typeId: 5 },
-      { id: 6, content: 'Cook dinner', typeId: 6 },
+      { id: '1', content: 'Cook Design', typeId: 1 },
+      { id: '2', content: 'Cook dinner', typeId: 2 },
+      { id: '3', content: 'Cook dinner', typeId: 3 },
+      { id: '4', content: 'Cook dinner', typeId: 4 },
+      { id: '5', content: 'Cook dinner', typeId: 5 },
+      { id: '6', content: 'Cook dinner', typeId: 6 },
     ],
     columns: [
       {
@@ -93,6 +92,35 @@ const initialState = [
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case NEW_TASK:
+      return state.map((project) => {
+        if (!project.isSelected) {
+          return project
+        }
+
+        const maxTaskId = project.taskList.reduce((lastMax, task) => {
+          const id = parseInt(task.id)
+          lastMax = lastMax >= id ? lastMax : id
+          return lastMax
+        }, 1)
+
+        const newMaxId = maxTaskId + 1
+
+        return {
+          ...project,
+          taskList: [
+            ...project.taskList,
+            { id: newMaxId.toString(), ...action.payload.taskData },
+          ],
+          columns: project.columns.map((column) => {
+            if (column.id !== action.payload.columnId) {
+              return column
+            }
+
+            return { ...column, taskIds: [...column.taskIds, newMaxId] }
+          }),
+        }
+      })
     case ADD_TYPE:
       return state.map((project) => {
         if (!project.isSelected) {
