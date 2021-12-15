@@ -23,5 +23,5 @@ type TTask = {
 type TColumn = {
   id: string
   title: string
-  taskIds: string[]
+  taskIds: number[]
 }
