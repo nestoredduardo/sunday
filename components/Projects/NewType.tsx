@@ -2,10 +2,14 @@ import { connect } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
 import { addType } from '@projectActions'
+import { hideModal } from '@modalActions'
 
-const NewType = ({ addType }) => {
+const NewType = ({ addType, hideModal }) => {
   const { register, handleSubmit } = useForm()
-  const onSubmit = (data) => addType(data.name, data.color)
+  const onSubmit = (data) => {
+    addType(data.name, data.color)
+    hideModal()
+  }
 
   const defaultTypes = [
     //default
@@ -94,6 +98,7 @@ const NewType = ({ addType }) => {
 
 const mapDispatchToProps = {
   addType,
+  hideModal,
 }
 
 export default connect(null, mapDispatchToProps)(NewType)

@@ -1,15 +1,18 @@
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 
 import IconButton from '@mui/material/IconButton'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 
 import { showModal } from '@modalActions'
+import { selectSelectedProject } from '@utils/ProjectsSelectors'
 
 const ProjectProgress = ({ showModal }) => {
+  const selectedProject = useSelector(selectSelectedProject)
+
   return (
     <section className="mt-3">
       <div className="flex">
-        <ul className="flex overflow-x-auto gap-2 items-center">
+        <ul className="hidden overflow-x-auto gap-2 items-center">
           <li className="flex items-center h-6 px-3 text-xs font-semibold rounded-full text-pink-500 bg-pink-100">
             Design
           </li>
@@ -32,7 +35,23 @@ const ProjectProgress = ({ showModal }) => {
             Marketing
           </li>
         </ul>
-        <IconButton color="primary" onClick={() => showModal('addType')}>
+        {/*Tailwind need the colors */}
+        <ul className="flex overflow-x-auto gap-2 items-center">
+          {selectedProject.types.map((type) => {
+            return (
+              <li
+                className={`flex items-center text-center h-6 px-3 text-xs font-semibold rounded-full text-${type.color}-500 bg-${type.color}-100`}
+              >
+                {type.name}
+              </li>
+            )
+          })}
+        </ul>
+        <IconButton
+          color="primary"
+          onClick={() => showModal('addType')}
+          className="ml-auto"
+        >
           <AddBoxIcon />
         </IconButton>
       </div>

@@ -2,10 +2,14 @@ import { connect } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
 import { createProject } from '@projectActions'
+import { hideModal } from '@modalActions'
 
-const NewProject = ({ createProject }) => {
+const NewProject = ({ createProject, hideModal }) => {
   const { register, handleSubmit } = useForm()
-  const onSubmit = (data) => createProject(data.name, data.aim)
+  const onSubmit = (data) => {
+    createProject(data.name, data.aim)
+    hideModal()
+  }
 
   const stopPropagation = (e) => {
     e.stopPropagation()
@@ -67,6 +71,7 @@ const NewProject = ({ createProject }) => {
 
 const mapDispatchToProps = {
   createProject,
+  hideModal,
 }
 
 export default connect(null, mapDispatchToProps)(NewProject)

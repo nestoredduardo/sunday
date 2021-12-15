@@ -29,10 +29,6 @@ const createProject = (name, aim) => (dispatch) => {
       { id: 1, name: 'Design', color: 'pink' },
       { id: 2, name: 'Development', color: 'green' },
       { id: 3, name: 'Data', color: 'blue' },
-      { id: 4, name: 'Planning', color: 'indigo' },
-      { id: 5, name: 'Testing', color: 'purple' },
-      { id: 6, name: 'Launch', color: 'yellow' },
-      { id: 7, name: 'Marketing', color: 'red' },
     ],
     taskList: [
       //default
