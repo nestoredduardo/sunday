@@ -9,7 +9,7 @@ import filterReducer from './filters/filterReducers'
 const rootReducer = combineReducers({
   projects: projectsReducer,
   modals: modalReducer,
-  filter: filterReducer,
+  filters: filterReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>

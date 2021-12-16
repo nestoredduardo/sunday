@@ -7,7 +7,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FILTER_TASK_TYPES:
-      return { ...state, taskType: action.payload }
+      return {
+        ...state,
+        taskType: state.taskType === action.payload ? 0 : action.payload,
+      }
     default:
       return state
   }

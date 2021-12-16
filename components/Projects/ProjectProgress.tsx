@@ -7,7 +7,7 @@ import { showModal } from '@modalActions'
 import { filterByTaskType } from '@filterActions'
 import { selectSelectedProject } from '@utils/ProjectsSelectors'
 
-const ProjectProgress = ({ showModal, filterByTaskType }) => {
+const ProjectProgress = ({ taskFilter, showModal, filterByTaskType }) => {
   const selectedProject = useSelector(selectSelectedProject)
 
   return (
@@ -39,10 +39,14 @@ const ProjectProgress = ({ showModal, filterByTaskType }) => {
         {/*Tailwind need the colors */}
         <ul className="flex overflow-x-auto gap-2 items-center">
           {selectedProject.types.map((type) => {
+            const bg =
+              taskFilter === type.id ? 'border-2' : `bg-${type.color}-100`
+
             return (
               <li
                 key={type.id}
-                className={`flex items-center text-center h-6 px-3 text-xs font-semibold rounded-full text-${type.color}-500 bg-${type.color}-100`}
+                onClick={() => filterByTaskType(type.id)}
+                className={`flex items-center text-center h-6 px-3 text-xs font-semibold rounded-full text-${type.color}-500 ${bg}`}
               >
                 {type.name}
               </li>
@@ -66,4 +70,10 @@ const mapDispatchToProps = {
   filterByTaskType,
 }
 
-export default connect(null, mapDispatchToProps)(ProjectProgress)
+const mapStateToProps = ({ filters }) => {
+  return {
+    taskFilter: filters.taskType,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectProgress)
