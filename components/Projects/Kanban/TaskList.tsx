@@ -10,10 +10,16 @@ import { showModalExtra } from '@modalActions'
 interface TaskListProps {
   column: TColumn
   project: TProject
+  taskFilter: number
   showModalExtra: (modalName: string, extraData: object) => void
 }
 
-const TaskList = ({ column, project, showModalExtra }: TaskListProps) => {
+const TaskList = ({
+  column,
+  project,
+  taskFilter,
+  showModalExtra,
+}: TaskListProps) => {
   return (
     <section className="flex flex-col flex-shrink-0 w-72">
       <div className="flex items-center flex-shrink-0 h-10 px-2">
@@ -39,15 +45,31 @@ const TaskList = ({ column, project, showModalExtra }: TaskListProps) => {
             ref={provided.innerRef}
           >
             {column.taskIds.map((taskId, index) => {
-              const task = project.taskList.find((task) => task.id == taskId)
-              return (
-                <Task
-                  key={taskId}
-                  task={task}
-                  types={project.types}
-                  index={index}
-                />
+              let task = project.taskList.find(
+                (task) => parseInt(task.id) == taskId
               )
+
+              if (taskFilter !== 0) {
+                if (task.typeId == taskFilter) {
+                  return (
+                    <Task
+                      key={taskId}
+                      task={task}
+                      types={project.types}
+                      index={index}
+                    />
+                  )
+                }
+              } else {
+                return (
+                  <Task
+                    key={taskId}
+                    task={task}
+                    types={project.types}
+                    index={index}
+                  />
+                )
+              }
             })}
             {provided.placeholder}
           </ul>
@@ -57,8 +79,12 @@ const TaskList = ({ column, project, showModalExtra }: TaskListProps) => {
   )
 }
 
+const mapStateToProps = ({ filters }) => ({
+  taskFilter: filters.taskType,
+})
+
 const mapDispatchToProps = {
   showModalExtra,
 }
 
-export default connect(null, mapDispatchToProps)(TaskList)
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList)
