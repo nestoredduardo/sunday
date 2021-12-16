@@ -28,7 +28,7 @@ const NewType = ({ addType, hideModal }) => {
 
   return (
     <section
-      className="z-20 bg-white p-10 rounded-xl"
+      className="z-20 bg-white p-10 rounded-xl md:w-[450px]"
       onClick={stopPropagation}
     >
       <h1 className="text-center font-bold text-2xl mb-2 bg-clip-text text-transparent bg-gradient-to-br from-[#FFCC33] to-[#E233FF]">

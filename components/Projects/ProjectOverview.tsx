@@ -36,11 +36,11 @@ const ProjectOverview = () => {
 
   return (
     <section className="flex flex-col md:flex-row-reverse">
-      <article className="md:w-1/2 md:items-center">
+      <article className="md:w-1/2 md:items-center lg:w-2/3">
         <h2 className="font-bold text-lg">Objetivo:</h2>
         <p className="leading-5">{selectedProject['aim']}</p>
       </article>
-      <article className="md:w-1/2 md:flex md:flex-col md:items-center">
+      <article className="md:w-1/2 md:flex md:flex-col md:items-center lg:w-1/3">
         <div className="w-2/3 mx-auto my-4">
           <Doughnut data={data} />
         </div>

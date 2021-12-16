@@ -19,3 +19,7 @@
     rgba(0, 212, 255, 0.6057773451177346) 100%
   );
 }
+
+.MuiListItemText-primary {
+  font-size: 1.3rem;
+}

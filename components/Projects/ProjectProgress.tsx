@@ -11,7 +11,7 @@ const ProjectProgress = ({ taskFilter, showModal, filterByTaskType }) => {
   const selectedProject = useSelector(selectSelectedProject)
 
   return (
-    <section className="mt-3 md:mx-12">
+    <section className="mt-3 md:mx-12 lg:mx-auto">
       <div className="flex">
         <ul className="hidden overflow-x-auto gap-2 items-center">
           <li className="flex items-center h-6 px-3 text-xs font-semibold rounded-full text-pink-500 bg-pink-100">
@@ -46,7 +46,7 @@ const ProjectProgress = ({ taskFilter, showModal, filterByTaskType }) => {
               <li
                 key={type.id}
                 onClick={() => filterByTaskType(type.id)}
-                className={`flex items-center text-center h-6 px-3 text-xs font-semibold rounded-full text-${type.color}-500 ${bg}`}
+                className={`flex cursor-pointer items-center text-center h-6 px-3 text-xs font-semibold rounded-full text-${type.color}-500 ${bg}`}
               >
                 {type.name}
               </li>

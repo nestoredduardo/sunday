@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction } from '@mui/material'
+import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import ProjectIcon from '@mui/icons-material/Engineering'
@@ -18,15 +18,17 @@ const NavBar = () => {
   }, [router])
 
   return (
-    <BottomNavigation
-      showLabels
-      className="fixed bottom-0 w-full bg-background lg:relative"
-    >
+    <section className="fixed bottom-0 w-full bg-background lg:relative lg:row-start-1 lg:col-start-1 lg:top-40">
       {/* <Link href="/">
         <BottomNavigationAction label="Dashboard" icon={<DashboardIcon />} />
       </Link> */}
       <Link href="/proyectos">
-        <BottomNavigationAction label="Proyectos" icon={<ProjectIcon />} />
+        <ListItem button className="w-min mx-auto lg:w-auto">
+          <ListItemIcon className="justify-center">
+            <ProjectIcon />
+          </ListItemIcon>
+          <ListItemText primary="Proyectos" className="hidden lg:block" />
+        </ListItem>
       </Link>
       {/* <Link href="/finanzas">
         <BottomNavigationAction label="Finanzas" icon={<FinanceIcon />} />
@@ -37,7 +39,7 @@ const NavBar = () => {
       <Link href="/objetivos">
         <BottomNavigationAction label="Objetivos" icon={<AimIcon />} />
       </Link> */}
-    </BottomNavigation>
+    </section>
   )
 }
 

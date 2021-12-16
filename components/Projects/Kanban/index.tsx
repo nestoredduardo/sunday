@@ -63,7 +63,7 @@ const Kanban = ({ updateColumn }) => {
   }
 
   return (
-    <section className="p-6 kanban-bg flex overflow-x-auto gap-6">
+    <section className="p-6 kanban-bg flex overflow-x-auto gap-6 justify-center">
       <DragDropContext onDragEnd={onDragEnd}>
         {selectedProject.columns.map((column) => {
           return (
