@@ -4,7 +4,7 @@ import NavBar from './NavBar'
 
 const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative lg:grid lg:grid-cols-3 lg:grid-rows-5">
       <Header />
       {children}
       <NavBar />

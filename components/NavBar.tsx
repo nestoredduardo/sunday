@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <BottomNavigation
       showLabels
-      className="fixed bottom-0 w-full bg-background"
+      className="fixed bottom-0 w-full bg-background lg:relative"
     >
       {/* <Link href="/">
         <BottomNavigationAction label="Dashboard" icon={<DashboardIcon />} />
