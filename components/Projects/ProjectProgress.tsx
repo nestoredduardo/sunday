@@ -4,9 +4,10 @@ import IconButton from '@mui/material/IconButton'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 
 import { showModal } from '@modalActions'
+import { filterByTaskType } from '@filterActions'
 import { selectSelectedProject } from '@utils/ProjectsSelectors'
 
-const ProjectProgress = ({ showModal }) => {
+const ProjectProgress = ({ showModal, filterByTaskType }) => {
   const selectedProject = useSelector(selectSelectedProject)
 
   return (
@@ -62,6 +63,7 @@ const ProjectProgress = ({ showModal }) => {
 
 const mapDispatchToProps = {
   showModal,
+  filterByTaskType,
 }
 
 export default connect(null, mapDispatchToProps)(ProjectProgress)

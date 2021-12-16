@@ -4,10 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import projectsReducer from './projects/projectsReducer'
 import modalReducer from './modal/modalReducers'
+import filterReducer from './filters/filterReducers'
 
 const rootReducer = combineReducers({
   projects: projectsReducer,
   modals: modalReducer,
+  filter: filterReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
