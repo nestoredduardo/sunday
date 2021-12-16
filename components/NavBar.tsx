@@ -22,13 +22,13 @@ const NavBar = () => {
       showLabels
       className="fixed bottom-0 w-full bg-background"
     >
-      <Link href="/">
+      {/* <Link href="/">
         <BottomNavigationAction label="Dashboard" icon={<DashboardIcon />} />
-      </Link>
+      </Link> */}
       <Link href="/proyectos">
         <BottomNavigationAction label="Proyectos" icon={<ProjectIcon />} />
       </Link>
-      <Link href="/finanzas">
+      {/* <Link href="/finanzas">
         <BottomNavigationAction label="Finanzas" icon={<FinanceIcon />} />
       </Link>
       <Link href="/habitos">
@@ -36,7 +36,7 @@ const NavBar = () => {
       </Link>
       <Link href="/objetivos">
         <BottomNavigationAction label="Objetivos" icon={<AimIcon />} />
-      </Link>
+      </Link> */}
     </BottomNavigation>
   )
 }

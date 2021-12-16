@@ -35,16 +35,20 @@ const ProjectOverview = () => {
   }
 
   return (
-    <section>
-      <h2 className="font-bold text-lg">Objetivo:</h2>
-      <p className="leading-5">{selectedProject['aim']}</p>
-      <div className="w-2/3 mx-auto my-4">
-        <Doughnut data={data} />
-      </div>
-      <p className="text-center">
-        {`${selectedProject.columns[2].taskIds.length}/${selectedProject.taskList.length}`}{' '}
-        Tareas Completadas
-      </p>
+    <section className="flex flex-col md:flex-row-reverse">
+      <article className="md:w-1/2 md:items-center">
+        <h2 className="font-bold text-lg">Objetivo:</h2>
+        <p className="leading-5">{selectedProject['aim']}</p>
+      </article>
+      <article className="md:w-1/2 md:flex md:flex-col md:items-center">
+        <div className="w-2/3 mx-auto my-4">
+          <Doughnut data={data} />
+        </div>
+        <p className="text-center">
+          {`${selectedProject.columns[2].taskIds.length}/${selectedProject.taskList.length}`}{' '}
+          Tareas Completadas
+        </p>
+      </article>
     </section>
   )
 }
