@@ -18,7 +18,7 @@ const NavBar = () => {
   }, [router])
 
   return (
-    <section className="fixed bottom-0 w-full bg-background lg:relative lg:row-start-1 lg:col-start-1 lg:top-40">
+    <section className="h-16 flex fixed bottom-0 w-full bg-background lg:relative lg:row-start-1 lg:col-start-1 lg:top-40">
       {/* <Link href="/">
         <BottomNavigationAction label="Dashboard" icon={<DashboardIcon />} />
       </Link> */}
